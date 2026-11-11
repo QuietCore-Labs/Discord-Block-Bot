@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN // GIF_BLOCKER</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container" style="max-width: 400px; text-align: center;">
+        <header>
+            <h1>ACCESS DENIED</h1>
+            <p>ENTER AUTHENTICATION KEY</p>
+        </header>
+
+        <div class="panel">
+            {% if error %}
+            <div style="color: #ff3333; margin-bottom: 10px;">>> {{ error }}</div>
+            {% endif %}
+
+            <form method="POST">
+                <input type="password" name="password" placeholder="ENTER PASSWORD" style="width: 100%; padding: 10px; margin-bottom: 10px; background: #111; border: 1px solid #333; color: #00ffcc; font-family: monospace;">
+                <button type="submit" class="btn btn-primary" style="width: 100%;">AUTHENTICATE</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

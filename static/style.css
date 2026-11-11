@@ -1,0 +1,289 @@
+:root {
+    --bg-color: #050505;
+    --panel-bg: #0a0a0a;
+    --border-color: #333333;
+    --text-main: #e0e0e0;
+    --text-muted: #666666;
+    --accent: #00ffcc; /* Cyan for tech feel */
+    --danger: #ff3333;
+    --success: #33ff33;
+    --font-mono: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-mono);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.4;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    background: var(--panel-bg);
+}
+
+header {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--accent);
+}
+
+header p {
+    margin: 5px 0 0;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.section-title {
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-left: 3px solid var(--accent);
+    padding-left: 10px;
+}
+
+.panel {
+    border: 1px solid var(--border-color);
+    margin-bottom: 25px;
+    padding: 15px;
+    background: #000;
+}
+
+/* Status Row */
+.status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.status-label {
+    font-weight: bold;
+    color: var(--text-muted);
+}
+
+.status-value {
+    font-weight: bold;
+    color: var(--success);
+}
+
+/* Inputs */
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="number"] {
+    flex: 1;
+    background: #111;
+    border: 1px solid var(--border-color);
+    color: var(--accent);
+    padding: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    outline: none;
+}
+
+input[type="number"]:focus {
+    border-color: var(--accent);
+}
+
+/* Buttons */
+.btn {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 8px 16px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.btn:hover {
+    background: var(--accent);
+    color: #000;
+}
+
+.btn-danger {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.btn-danger:hover {
+    background: var(--danger);
+    color: #000;
+}
+
+.btn-success {
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.btn-success:hover {
+    background: var(--success);
+    color: #000;
+}
+
+.btn-sm {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+}
+
+/* List Items */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9rem;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+.empty-msg {
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 0.85rem;
+}
+
+.hint {
+    margin-top: 10px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #000;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+/* --- MOBILE OPTIMIZATION --- */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        font-size: 14px; /* Slightly larger text */
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+        border: none; /* Remove border on mobile for cleaner look */
+        background: transparent;
+    }
+
+    header {
+        text-align: left;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+    }
+
+    header h1 {
+        font-size: 1.4rem;
+        line-height: 1.2;
+    }
+
+    /* Stack panels vertically with more breathing room */
+    .panel {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid var(--border-color);
+    }
+
+    /* Stack inputs and buttons vertically */
+    .input-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    input[type="number"] {
+        width: 100%;
+        padding: 15px; /* Taller input for fingers */
+        font-size: 1.1rem;
+    }
+
+    /* Make buttons full width and taller */
+    .btn {
+        width: 100%;
+        padding: 15px;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 5px;
+    }
+
+    /* Status row stack */
+    .status-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .status-value {
+        font-size: 1.2rem;
+    }
+
+    /* List items full width */
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 15px 0;
+    }
+
+    /* Make remove button full width on mobile */
+    .btn-sm {
+        width: 100%;
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    /* Hide the logout link in header, move it to footer or make it a button */
+    header a {
+        display: block;
+        float: none;
+        margin-top: 10px;
+        text-align: right;
+        font-size: 0.9rem;
+    }
+}

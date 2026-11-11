@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- THIS LINE IS CRITICAL FOR MOBILE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GIF_BLOCKER // CONTROL_PANEL</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        
+        <!-- VISIBLE HEADER SECTION -->
+        <header>
+            <h1>SYSTEM OVERRIDE // GIF_BLOCKER</h1>
+            <p>MANAGE RESTRICTED USERS FOR DISCORD SERVER</p>
+            <!-- Logout Button in Header -->
+            <a href="/logout" class="logout-link">[ LOGOUT ]</a>
+        </header>
+
+        <!-- STATUS PANEL -->
+        <div class="panel">
+            <div class="section-title">SYSTEM STATUS</div>
+            <div class="status-row">
+                <span class="status-label">OPERATIONAL STATE:</span>
+                <span class="status-value" id="bot-status">{{ 'ACTIVE' if config.enabled else 'INACTIVE' }}</span>
+            </div>
+            <div style="margin-top: 15px;">
+                <button onclick="toggleBot()" class="btn {{ 'btn-danger' if config.enabled else 'btn-success' }}">
+                    {{ 'DEACTIVATE SYSTEM' if config.enabled else 'INITIALIZE SYSTEM' }}
+                </button>
+            </div>
+        </div>
+
+        <!-- ADD USER PANEL -->
+        <div class="panel">
+            <div class="section-title">ADD RESTRICTED USER</div>
+            <div class="input-group">
+                <input type="number" id="user-id-input" placeholder="ENTER_USER_ID_HEX">
+                <button onclick="addUser()" class="btn btn-primary">EXECUTE_ADD</button>
+            </div>
+            <div class="hint">>> INSTRUCTION: ENABLE DEV MODE. RIGHT-CLICK TARGET. COPY ID.</div>
+        </div>
+
+        <!-- BLOCKLIST PANEL -->
+        <div class="panel">
+            <div class="section-title">ACTIVE RESTRICTIONS</div>
+            <ul id="blocklist-ul">
+                {% for uid in config.blocked_users %}
+                <li>
+                    <span>ID: {{ uid }}</span>
+                    <button onclick="removeUser('{{ uid }}')" class="btn btn-danger btn-sm">TERMINATE</button>
+                </li>
+                {% endfor %}
+            </ul>
+            {% if not config.blocked_users %}
+            <div class="empty-msg">>> NO ACTIVE RESTRICTIONS DETECTED.</div>
+            {% endif %}
+        </div>
+
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
